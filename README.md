@@ -27,7 +27,7 @@ Collection of advice on how to review (and write) Substrate based runtimes.
 
 ### Within Pallets
 - Watch out for anything that changes the storage layout -- sometimes it is more subtle than simply adding or removing a field to `decl_storage`/`#[pallet::storage]`. Reasons the key or value might change:
-  - Key: changing the name. Use [`#[pallet::storage_prefix]` renaming](https://paritytech.github.io/substrate/monthly-2022-01/frame_support/attr.pallet.html#storage-palletstorage-optional) to avoid the underlying key to change.
+  - Key: changing the name. Use [`#[pallet::storage_prefix]` renaming](https://paritytech.github.io/substrate/monthly-2022-01/frame_support/attr.pallet.html#storage-palletstorage-optional) to avoid the underlying key changing.
   - Key: changing the hasher (e.g. `Blake2_128Concat` to `Twox64Concat`)
   - Key/Value: changing a type (that serializes differently) (e.g. `type MyKey = u16` to `type MyKey = u32`)
   - Value: adding a field to a struct (e.g. `MyStruct(u8)` to `MyStruct(u8, u8)`)
